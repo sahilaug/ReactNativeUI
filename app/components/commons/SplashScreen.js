@@ -17,7 +17,7 @@ class SplashScreenComponent extends React.Component{
       navigator.replace({
         id: 'HomePageComponent',
       });
-    }, 1000);
+    }, 3000);
   }
 
   render() {

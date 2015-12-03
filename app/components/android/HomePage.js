@@ -11,10 +11,6 @@ var {
 } = React;
 
 var HomePageComponent = React.createClass({
-  goBack: function() {
-    var navigator = this.props.navigator;
-    navigator.pop();
-  },
   render: function() {
     return (
       <View style={styles.homepage}>
@@ -22,9 +18,6 @@ var HomePageComponent = React.createClass({
         actions={toolbarActions}
         style = {styles.toolbar}
         title="React"
-        navIcon = {require('../../../images/reactIcon.png')}
-        onIconClicked = {this.goBack}
-        rtl = {false}
         >
         </ToolbarAndroid>
         <ScrollView
@@ -96,9 +89,12 @@ var HomePageComponent = React.createClass({
 });
 
 var toolbarActions = [
-  {title: 'Create'},
-  {title: 'Filter'},
-  {title: 'Settings'}
+  {title: 'DrawerLayoutAndroid'},
+  {title: 'Image'},
+  {title: 'ListView'},
+  {title: 'MapView'},
+  {title: 'Modal'},
+  {title: 'Navigator'},
 ];
 
 var styles = StyleSheet.create({
