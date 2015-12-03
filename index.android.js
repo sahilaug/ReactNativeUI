@@ -6,6 +6,8 @@
 
 var React = require('react-native');
 var DrawerLayoutAndroidComponent = require('./app/components/android/DrawerLayoutAndroidComponent');
+var HomePageComponent = require('./app/components/android/HomePage');
+var SplashScreenComponent = require('./app/components/commons/SplashScreen');
 var {
   AppRegistry,
   StyleSheet,
@@ -20,18 +22,27 @@ class reactNativieUI extends React.Component{
   render() {
     return (
       <Navigator
-        initialRoute={{id:"FirstPage",name: 'My First Scene'}}
+        initialRoute={{id:"SplashScreen"}}
         renderScene={this.renderScene.bind(this)}
-      ></Navigator>
+        configureScene={(route) => {
+          if (route.sceneConfig) {
+            return route.sceneConfig;
+          }
+          return Navigator.SceneConfigs.FloatFromLeft;
+        }} />
     );
   }
 
   renderScene(route, navigator) {
     console.log(route.id );
     var routeId = route.id;
-    return  ( <DrawerLayoutAndroidComponent navigator={navigator}/> );
-    //return <View><Text>Yo</Text></View>
-
+    if(routeId === 'SplashScreen'){
+      return ( <SplashScreenComponent navigator={navigator}/> );
+    } else if(routeId === 'DrawerLayoutAndroid'){
+      return  ( <DrawerLayoutAndroidComponent navigator={navigator}/> );
+    } else if(routeId === 'HomePageComponent'){
+      return  ( <HomePageComponent navigator={navigator}/> );
+    }
   }
 }
 
